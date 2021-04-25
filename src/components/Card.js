@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const Card = ({ onClick, number, isActive, freeze }) => {
@@ -30,6 +31,13 @@ const Card = ({ onClick, number, isActive, freeze }) => {
       </span>
     </div>
   );
+};
+
+Card.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  number: PropTypes.number.isRequired,
+  isActive: PropTypes.bool.isRequired,
+  freeze: PropTypes.bool.isRequired,
 };
 
 export default Card;
