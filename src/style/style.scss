@@ -35,6 +35,10 @@
       transition-delay: 0.3s;
     }
   }
+  &.freeze {
+    pointer-events: none;
+    cursor: auto;
+  }
 }
 .main-card__number {
   opacity: 0;

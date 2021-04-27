@@ -13,3 +13,10 @@ export const updatedItemFreeze = (currentNumber) => {
     payload: currentNumber,
   }
 };
+
+export const updatedAllItemFreeze = (isFreeze) => {
+  return {
+    type: ACTIONS_TYPES.UPDATED_ALL_ITEM_FREEZE,
+    payload: isFreeze,
+  }
+};

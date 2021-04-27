@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { updatedItemAction, updatedItemFreeze } from '../store/actions';
+import { updatedItemAction, updatedItemFreeze, updatedAllItemFreeze } from '../store/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import Card from './Card';
 
@@ -13,16 +13,23 @@ const Wrapper = () => {
 
   useEffect(() => {
     if (activeNumber.length === 2) {
+      dispatch(updatedAllItemFreeze(true));
       if(activeNumber[0].number !== activeNumber[1].number) {
         setTimeout(() => {
           dispatch(updatedItemAction(activeNumber[0].id));
           dispatch(updatedItemAction(activeNumber[1].id));
           setActiveNumber([]);
+          setTimeout(() => (
+            dispatch(updatedAllItemFreeze(false))
+          ), 500)
         }, 1000);
       }
       if(activeNumber[0].number === activeNumber[1].number) {
         dispatch(updatedItemFreeze(activeNumber[0].number));
         setActiveNumber([]);
+        setTimeout(() => (
+          dispatch(updatedAllItemFreeze(false))
+        ), 1000)
       }
     }
   }, [activeNumber]);

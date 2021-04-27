@@ -29,6 +29,14 @@ export default function reducer(state = initialState, action) {
           return item;
         })
       };
+    case ACTIONS_TYPES.UPDATED_ALL_ITEM_FREEZE:
+      return {
+        ...state,
+        sortedArr: state.sortedArr.map(item =>
+        {
+          return {...item, freeze: action.payload};
+        })
+      };
 
     default:
       return state;
